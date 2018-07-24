@@ -31,13 +31,43 @@
         </div>
     </div>
     
-     <?php if(!empty($block->getConvertedAmount())):?>
-         <div class="field name">
+         <div class="field name " id="pln_converted" <?php if(empty($block->getConvertedAmount())) echo 'style="display:none;"';?> >
             <label class="label" for="name"><span><?= $block->escapeHtml(__('PLN')) ?></span></label>
             <div class="control">
                 <input disabled value="<?php echo $block->getConvertedAmount();?>" class="input-text" type="text"  />
             </div>
         </div>	
-        <?php endif;?>
+
 	</fieldset>
 </form>
+
+
+<script>
+require(['jquery'],function(){
+    jQuery(document).ready(function() {
+        jQuery("#currency-form").submit(function(e){
+			e.preventDefault();
+			if(!jQuery("#currency-form").valid())
+			{
+				return false;
+			}
+            var amount_rub = jQuery("input#currency_rub").val();
+
+            var url = "<?php echo $block->getUrl().'currencyconverter/convert/result/' ?>";
+            jQuery.ajax({
+            url: url,
+            type: "POST",
+            data: {amount:amount_rub},
+            showLoader: true,
+            cache: false,
+            success: function(response){
+                console.log(response);
+                jQuery("#pln_converted").show();
+                jQuery("#pln_converted div.control input").val(response.converted_amount);
+            }
+        });
+        return false;
+        });
+    });
+});
+</script>

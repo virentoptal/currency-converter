@@ -19,7 +19,7 @@ class Index extends \Magento\Framework\View\Element\Template
 			/* get currency "PLN" Value */
     	    $convertedAmount = $helperData->getCurrencyRate($request['amount'] , 'RUB',  'PLN');
     	    $this->setAmount($request['amount']);
-    	    $this->setConvertedAmount($convertedAmount);
+    	    $this->setConvertedAmount(number_format((float)$convertedAmount, 2, '.', ''));
     	}
     }
 }
