@@ -1,0 +1,22 @@
+{
+    "name": "toptalvirendra/currency-converter",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "virendra@toptal.com",
+            "name": "Virendra"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ToptalVirendra\\CurrencyConverter\\": ""
+        }
+    }
+}

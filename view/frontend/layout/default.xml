@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+       <!--  Add New links with following code -->
+        <referenceBlock name="header.links">
+            <!-- Contact us Link -->
+            <block class="Magento\Framework\View\Element\Html\Link" name="contactus.link" before="-">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="false">Currency Convert</argument>
+                    <argument name="path" xsi:type="string" translate="false">currencyconverter/convert</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

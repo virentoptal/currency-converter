@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var \Magento\Contact\Block\ContactForm $block */
+?>
+<form class="form currency"
+      action=""
+      id="currency-form"
+      method="get"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+      <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Converter')) ?></span></legend><br />
+        <div class="field name required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('RUB')) ?></span></label>
+            <div class="control">
+                <input name="amount" id="currency_rub" title="<?= $block->escapeHtmlAttr(__('RUB')) ?>" value="<?php echo $block->getAmount();?>" class="input-text" type="number" data-validate="{required:true}"/>
+            </div>
+        </div>
+       
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Convert')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Convert')) ?></span>
+            </button>
+        </div>
+    </div>
+    
+     <?php if(!empty($block->getConvertedAmount())):?>
+         <div class="field name">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('PLN')) ?></span></label>
+            <div class="control">
+                <input disabled value="<?php echo $block->getConvertedAmount();?>" class="input-text" type="text"  />
+            </div>
+        </div>	
+        <?php endif;?>
+	</fieldset>
+</form>
